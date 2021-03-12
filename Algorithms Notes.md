@@ -1,0 +1,1 @@
+1. in case of multiple for loop.......if internal condition doesnot depend on order of i or j (i, j = indexs)...then we can use internal index j =i+1 or i (instead of j = 0) to avoid duplicate checking. For Eg - nums[i] + nums[j] we can avoid duplicate checking but nums[i] / nums[j] we can not avoid duplicate checking.
