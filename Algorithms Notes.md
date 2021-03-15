@@ -1,1 +1,4 @@
 1. in case of multiple for loop.......if internal condition doesnot depend on order of i or j (i, j = indexs)...then we can use internal index j =i+1 or i (instead of j = 0) to avoid duplicate checking. For Eg - nums[i] + nums[j] we can avoid duplicate checking but nums[i] / nums[j] we can not avoid duplicate checking.
+2. if you are getting digits one by one then instead of char array / StringBuilder, make it as a single integer by using concept = a * 10 + b (https://leetcode.com/problems/reverse-integer/)
+3. Always avoid ' + ' operation in String specially in loop , instead use StringBuilder or char[] as it has less TC. Better to use String Builder because of its simplicity.
+4. append() method of StringBuilder takes TC = O(1) while toString() method of StringBuilder takes TC = O(n), SC = O(n).
