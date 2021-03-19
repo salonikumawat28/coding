@@ -34,7 +34,7 @@ import org.graalvm.compiler.replacements.StandardGraphBuilderPlugins.StringIndex
 public class ReverseInteger {
 
     public static void main(String[] args) {
-        System.out.println(reverse(1234));
+        System.out.println(reverse(0));
         System.out.println(reverseByCharArray("saloni"));
         System.out.println(reverseByStringAdd("mehul"));
         System.out.println(reverseByBuilder("Abhishek"));
@@ -48,12 +48,31 @@ public class ReverseInteger {
      * @return reverse integer
      */
     public static int reverse(int x) { // TC = O(n), SC = O(1), where n is number of digits in x.
-        int reverse = 0; // TC = O(1), O(!)
+        int reverse = 0;// TC = O(1), O(1)
         while(x != 0) {  // TC = O(n), SC = O(1)
+            if(x >= 0 && reverse > (Integer.MAX_VALUE - (x % 10)) / 10) { return 0;}
+            if(x < 0 && reverse < (Integer.MIN_VALUE - (x % 10)) / 10) { return 0;}
             reverse = reverse * 10 + (x % 10);  // TC = O(1), SC O(1)
             x = x / 10; // TC O(1), SC = O(1)
         }
         return reverse; // TC = O(1), SC = O(1)
+    }
+
+    /**
+     * Reversing the input integer.
+     * 
+     * Getting each digit in reverse fashion and creating reverse integer using (a * 10 + b) concept.
+     * @param x input integer.
+     * @return reverse integer
+     */
+    public static int reverseByLong(int x) {
+        long reverse = 0;
+        while(x != 0) {
+            reverse = reverse * 10 + (x % 10);
+            x = x / 10;
+        }
+        if(reverse > Integer.MAX_VALUE || reverse < Integer.MIN_VALUE) {return 0;}
+        return (int)reverse;
     }
 
     /**
@@ -69,7 +88,6 @@ public class ReverseInteger {
         for(int i = 0; i < length; i++) { // TC = O(n), SC = O(1)
             reverseArr[i] = str.charAt(length - i - 1); // TC = O(1), SC = O(1)
         }
-        
         return new String(reverseArr); // TC = O(n), SC = O(1)
     }
 
@@ -84,7 +102,7 @@ public class ReverseInteger {
         int length = str.length(); // TC = O(1), SC = O(1)
         String newStr = ""; // TC = O(1), SC = O(1)
         for(int i = 0; i < length; i++) { // TC = O(n ^ 2), SC = O(n)
-            newStr = newStr + str.charAt(length - i - 1); // TC = O(i), SC = O(i)
+            newStr += str.charAt(length - i - 1); // TC = O(i), SC = O(i)
         }
         return newStr; // TC = O(1), SC = O(1)
     }
