@@ -2,3 +2,5 @@
 2. if you are getting digits one by one then instead of char array / StringBuilder, make it as a single integer by using concept = a * 10 + b (https://leetcode.com/problems/reverse-integer/)
 3. Always avoid ' + ' operation in String specially in loop , instead use StringBuilder or char[] as it has less TC. Better to use String Builder because of its simplicity.
 4. append() method of StringBuilder takes TC = O(1) while toString() method of StringBuilder takes TC = O(n), SC = O(n).
+5. To get each digit in integer, divide by 10 in loop and do % to get the digit.
+6. n = logx  + 1 where n is number of digits in x. So, O(n) = O(logx) = O(1) , we can say O(1) because we know n max = 32, Hence constant.

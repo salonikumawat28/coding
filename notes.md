@@ -37,4 +37,16 @@ Notes - 14/03/2021 ................................
 4. Integer (reference) to String conversion = x.toString(), where x is integer object.
 5. String constructor takes O(n) time ..... eg= String str = "saloni" takes O(n) time where n is length of str. Eg = String str = new String("saloni") takes O(n) time.
 6. ' + ' OPERATION  in String creates a new String with combine length of left and right. So it takes O(m + n) time where m is left length and n is right length.
+7. If same method is being used again and again in same method then its better to call it once and stored it in a variable. Calling it again and again increases TC.
+
+Notes - 17/03/2021 ......................................
+1. ' == ' compare the reference address in object types but value in primitive types. So, for value comparision in object types use equals(). For eg - String a = new String("saloni"); , String b = new String("saloni"); , Here a == b is false but a.equals(b); is true.
+2. String a = "saloni" ; and String b = "saloni"; Here we can use '==' and a == b will be true . This is a special case as variables are define without ' new ' keyword which uses a concept ie. String pool (you will learn latter).
+
+Notes - 19/03/2021...........................
+1. corner cases in any integer problem are negative values; overflow because of *, +, -; infinite because of 0 denominator in divide.
+2. To avoid overflow issue we can use long whenever required for *, + -.
+3. If 'if else' statement has only one line using same variable, use ternary operator. for eg => int y = (x > 0) ? x : 0;
+4. Whenever you solve a problem, think in mind what steps are requied to solvethe problem, for eact step write a new method. if the step has only 1-2 lines then no need to create a new method but use " COMMENTS ".
+5. corner cases in string are null & "".
 
