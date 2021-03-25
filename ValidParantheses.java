@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-
-import org.graalvm.compiler.hotspot.stubs.OutOfBoundsExceptionStub;
+import java.util.Stack;
 
 /**
  * https://leetcode.com/problems/valid-parentheses/
@@ -40,7 +38,7 @@ import org.graalvm.compiler.hotspot.stubs.OutOfBoundsExceptionStub;
  * 1 <= s.length <= 104
  * s consists of parentheses only '()[]{}'
  */
-public class ValidParantheses<E> {
+public class ValidParantheses {
 
     public static void main(String[] args) {
         String s = "([])";
@@ -68,21 +66,20 @@ public class ValidParantheses<E> {
         if(length % 2 != 0) return false; // O(1), O(1)
 
         // Checking valid Parantheses
-        ArrayList<Character> list = new ArrayList<Character>(); // O(1), O(1)
+        Stack<Character> stack = new Stack<Character>(); // O(1), O(1)
         for(int i = 0; i < length; i++) { // O(n), O(n)
             char current = s.charAt(i); // O(1), O(1)
-            int lastIndex = list.size() - 1;  // O(1), O(1)
 
             // If opening backet then add it to the list and if closing backect then check it and remove it from the list.
             if(isOpeningParantheses(current)) { // O(1), O(1)
-                list.add(current); // O(1), O(1)
-            } else if(lastIndex >= 0 && isParanthesesMatch(list.get(lastIndex), current)) { // O(1), O(1)
-                list.remove(lastIndex); // O(1), O(1)
+                stack.push(current); // O(1), O(1)
+            } else if(!stack.isEmpty() && isParanthesesMatch(stack.peek(), current)) { // O(1), O(1)
+                stack.pop(); // O(1), O(1)
             } else {
                 return false; // O(1), O(1)
             } 
         }
-        return list.isEmpty(); // O(1), O(1)
+        return stack.isEmpty(); // O(1), O(1)
     }
 
     /**
