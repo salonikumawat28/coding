@@ -4,3 +4,5 @@
 4. append() method of StringBuilder takes TC = O(1) while toString() method of StringBuilder takes TC = O(n), SC = O(n).
 5. To get each digit in integer, divide by 10 in loop and do % to get the digit.
 6. n = logx  + 1 where n is number of digits in x. So, O(n) = O(logx) = O(1) , we can say O(1) because we know n max = 32, Hence constant.
+7. when ever a problem is using parantheses, think of using stack.
+8. In Promblems of linked list current is used to access every node and head is remain fixed for starting node only.

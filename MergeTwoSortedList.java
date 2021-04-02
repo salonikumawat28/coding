@@ -48,31 +48,31 @@ public class MergeTwoSortedList {
      * Step 3: If the merge list is empty, then set mergeHead and mergeCurrent to the smaller val.
      * Step 4: If not empty, then set the smaller val at mergeCurrent.next and move the mergeCurrent to next.
      * Step 5: Move the smaller val's current to next.
-     * @param head1
-     * @param head2
-     * @return
+     * @param head1 input list1
+     * @param head2 input list2
+     * @return mergeHead is merged final sorted list.
      */
-    public ListNode mergeTwoLists(ListNode head1, ListNode head2) {
+    public ListNode mergeTwoLists(ListNode head1, ListNode head2) { // O(n + m), O(1) where n is length of list1, and m is length of list2.
         ListNode current1 = head1; 
         ListNode current2 = head2;
         ListNode mergeHead = null;
         ListNode mergeCurrent = null;
 
-        while(current1 != null || current2 != null) {
-            boolean checkCurrent1Shorter = (current2 == null || current1.val < current2.val);
-            int val = checkCurrent1Shorter ? current1.val : current2.val;
+        while(current1 != null || current2 != null) { // O(n + m), O(1) 
+            boolean checkCurrent1Shorter = (current2 == null) || (current1 != null && current1.val < current2.val); // O(1), O(1)
+            ListNode shorterNode = checkCurrent1Shorter ? current1 : current2; // O(1), O(1)
 
             // Add the smaller val in the merged lsit. If merge list is empty, then set the mergeHead as well.
-            if(mergeHead == null) {
-                mergeHead = mergeCurrent = new ListNode(val);
+            if(mergeHead == null) { // O(1), O(1)
+                mergeHead = mergeCurrent = shorterNode; // O(1), O(1)
             } else {
-                mergeCurrent.next = new ListNode(val);
-                mergeCurrent = mergeCurrent.next;
+                mergeCurrent.next = shorterNode; // O(1), O(1)
+                mergeCurrent = mergeCurrent.next; // O(1), O(1)
             }
             
             // Move the smaller val's current to next.
-            if(checkCurrent1Shorter) current1 = current1.next;
-            else current2 = current2.next;
+            if(checkCurrent1Shorter) current1 = current1.next; // O(1), O(1)
+            else current2 = current2.next; // O(1), O(1)
         }
         return mergeHead;
     }
