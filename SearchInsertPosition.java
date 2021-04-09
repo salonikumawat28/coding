@@ -42,7 +42,33 @@ public class SearchInsertPosition {
         SearchInsertPosition solution = new SearchInsertPosition();
         System.out.println(solution.searchInsert(sortArray, target));
 
+    }
 
+    /**
+     * Search target in sorted array.
+     * 
+     * Steps:
+     * 1. Initialise low = 0, high = nums.length - 1.
+     * 2. Start a while loop till high > low.
+     * 3. Find mid = low + (high - low + 1)/2
+     * 4. If nums[mid] == target, return mid 
+     * 5. else if nums[mid] > target, high = mid - 1.
+     * 6. else low = mid + 1.
+     * 7. At the end of loop return low.
+     * @param nums is input sorted array
+     * @param target is given target for match.
+     * @return index value of target in input array.
+     */
+    public int binarySearchInsert(int[] nums, int target) { // O(logn), O(1) where n is length of array.
+        int low = 0; // O(1), O(1)
+        int high = nums.length - 1; // O(1), O(1)
+        while(high >= low) { // O(logn), O(1)
+            int mid = low + (high - low + 1)/2; // O(1), O(1)
+            if(nums[mid] == target) return mid; // O(1), O(1)
+            else if(nums[mid] > target) high = mid - 1; // O(1), O(1)
+            else low = mid + 1; // O(1), O(1)
+        }
+        return low; // O(1), O(1)
     }
 
     /**
