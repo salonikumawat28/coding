@@ -77,3 +77,7 @@ Notes - 1/04/2021.....................................
 2. cautiously use ' new ' keyword.
 3. Whenever you are calling object's method or variable use '.' ie. object.variable, object.method(). Whwnever you are using '.' in your logic always check whether the object can be null or not , if null then avoid it(null check).
 4. if in 'if else' logic almost all code is same except 1-2 variable then try to use ternary operator to optmise the code(by take out the same cde outside).
+
+Notes - 3/04/2021
+1. Solve the problem with copy pen concept.
+2. 

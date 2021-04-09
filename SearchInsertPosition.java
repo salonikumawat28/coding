@@ -49,9 +49,9 @@ public class SearchInsertPosition {
      * Search target in sorted given array.
      * 
      * steps: 
-     * 1. start a for loop i from 0 to array length - 1.
-     * 2. check if, nums[i] >= target , return i 
-     * 3. at the end of loop return last possible index + 1 ie. length. This is possible when all the elements in array < then target.
+     * 1. Start a for loop i from 0 to array length - 1.
+     * 2. Check if, nums[i] >= target, return i 
+     * 3. At the end of loop return last possible index + 1 ie. length. This is possible when all the elements in array < then target.
      * 
      * @param nums is input sorted array
      * @param target is given target
@@ -63,7 +63,7 @@ public class SearchInsertPosition {
             if(nums[i] >= target) return i; // O(1), O(1)
         }
 
-        // when all the elements < target, return last index + 1;
+        // When all the elements < target, return last index + 1;
         return length; // O(1), O(1)
     }
     
