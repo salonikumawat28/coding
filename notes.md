@@ -80,4 +80,38 @@ Notes - 1/04/2021.....................................
 
 Notes - 3/04/2021
 1. Solve the problem with copy pen concept.
-2. 
+
+Notes - 10/04/2021...................................
+Hashing:-
+1. Hash is an integer representation of an object.
+2. Hash is used in datastructure like hash map and hash set.
+3. In hash map they store a 'key value pair'. 
+4. In Hash map internally, array is used.
+5. To get the index where the 'key value pair' should be store, we first find the hash of key object,  and then do hash % arrayLength to find the index.
+7. Two same keys will always have same hashcode.
+8. Two different keys can have same hashcode ie. hashcode collision, and thus they have same index for both keys. This creates a problem that how to store two 'key value pairs' at same index.
+9. To store multiple 'key value pairs' at same index we use linked list at that index.
+10. Using a linked list increases our time complexity of basic method of hashmap and hashset, so we should avoid the  hashcode colision as much as collision , so that linked list doesnot have more that 2-3 elements, and thus saving time complexity.
+11. To avoid hashcode collions, write a good hash function.
+12. To get a good hashcode of a string, we should consider all charcters in the string, their indexex, using prime number in the calculation etc. 31 has been found a good prime number.
+13. Java uses- s[0].31^(m-1) + s[1].31^(m-2) + ... + s[m-1].31^0.
+14. In questionsrealted to hashing, we assume that hashcode collision are less (assuming key class haa good function).
+15. Even if hashcode are different for two different keys,their index in hashmap array an be same(i.e. index collision). This index collision can happen because we do hash % arrayLength.
+16. To avoid index collision, we always keep arraylength > hashmap.size so that each element  has a chance to go to a different inde. Weachieve this by doubling the arrayLength, whenever arraylength == size.
+17. hwen searching a sub string in a string, we can use rolling hash concept also known as Rabin karp algorithm, and this achieving O(n+m) instead of O(nm) assuming less collisin.
+18. Rolling hash: newHash = oldHash*31 - str[start-1]*31^m + str[end].
+
+Notes: 11/04/2021................
+
+Binary Search:
+1. It is only applied when array is sorted.
+2. we use low, high, mid pointers. for each loop iteration, we decide whether we should go to left section or right section. Thus in each loop we reduce length/2 for check.
+3. As in each loop length is redude by half for check, the while run in total for logn times. So the TC is logn  which is very fast.
+
+General:
+1. In an array we can use multiple concept to solve it. 
+    1. Rolling fixed size window: In this approach, we do start++ and end++ based on some condition to roll our window. For eg: rolling hash/ Rabin karp algorithm.
+    2. Rolling dynamic size window: In this approach, we either do start++ or end++ to change the size of our old window, or we do start = end = i to move to a new window. For eg: Finding contiguious sub array with maximum sum.
+    3. 
+
+

@@ -41,6 +41,7 @@ public class SearchInsertPosition {
         int target = 5;
         SearchInsertPosition solution = new SearchInsertPosition();
         System.out.println(solution.searchInsert(sortArray, target));
+        System.out.println(solution.binarySearchInsert(sortArray, target));
 
     }
 
