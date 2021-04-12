@@ -58,20 +58,20 @@ public class ImplementStrStr {
      * @param needle is input string
      * @return index where needle matches haystack
      */
-    public int strStrRolling(String haystack, String needle) {
-        int hayLength = haystack.length();
-        int needleLength = needle.length();
-        if(hayLength < needleLength) return -1;
-        if(needleLength == 0) return 0;
-        int power = power(needleLength);
-        int needleHashcode = findHashcode(needle, 0, needleLength - 1);
-        int haystackHashcode = findHashcode(haystack, 0, needleLength - 1);
+    public int strStrRolling(String haystack, String needle) { // O(n+m), O(1) where n is length of haystack and m is lrngth of needle. This is assuming collision are less but if collision are more then TC = O(nm).
+        int hayLength = haystack.length(); // O(1), O(1)
+        int needleLength = needle.length(); // O(1), O(1)
+        if(hayLength < needleLength) return -1; // O(1), O(1)
+        if(needleLength == 0) return 0; // O(1), O(1)
+        int power = power(needleLength); // O(m), O(1)
+        int needleHashcode = findHashcode(needle, 0, needleLength - 1); // O(m), O(1)
+        int haystackHashcode = findHashcode(haystack, 0, needleLength - 1); // O(m), O(1)
 
-        for(int i = 0; i <= hayLength - needleLength; i++) {
-            if(i != 0) haystackHashcode = rollingHashcode(haystackHashcode, haystack, i, needleLength, power);
-            if(haystackHashcode == needleHashcode && matches(needle, haystack, i)) return i;
+        for(int i = 0; i <= hayLength - needleLength; i++) { // O(n+m), O(1). Assuming collision are less because of good hash, matches() will be called around once.
+            if(i != 0) haystackHashcode = rollingHashcode(haystackHashcode, haystack, i, needleLength, power); // O(1), O(1)
+            if(haystackHashcode == needleHashcode && matches(needle, haystack, i)) return i; // O(m), O(1)
         }
-        return -1;
+        return -1; // O(1), O(1)
     }
 
     /**
@@ -86,12 +86,12 @@ public class ImplementStrStr {
      * @param end id ending index
      * @return hashcode of input string
      */
-    private int findHashcode(String str, int start, int end) {
-        int hashcode = 0;
-        for(int i = start; i <= end; i ++) {
-            hashcode = hashcode * 31 + str.charAt(i);
+    private int findHashcode(String str, int start, int end) { // O(m), O(1) where m is length of needle
+        int hashcode = 0; // O(1), O(1)
+        for(int i = start; i <= end; i ++) { // O(m), O(1)
+            hashcode = hashcode * 31 + str.charAt(i); // O(1), O(1)
         }
-        return hashcode;
+        return hashcode; // O(1), O(1)
     }
     
     /**
@@ -105,9 +105,9 @@ public class ImplementStrStr {
      * @param length is length of string
      * @return new rolling hashcode
      */
-    private int rollingHashcode(int oldHashcode, String str, int start, int length, int power) {
+    private int rollingHashcode(int oldHashcode, String str, int start, int length, int power) { // O(1), O(1) 
         return (oldHashcode - str.charAt(start - 1) * power) * 31 
-                + str.charAt(start - length - 1) ;
+                + str.charAt(start - length - 1) ; // O(m), O(1)
     }
 
     /**
@@ -123,11 +123,11 @@ public class ImplementStrStr {
      * @param start2 is starting index of str2 input string
      * @return if both string maches or not
      */
-    private boolean matches(String str1, String str2, int start2) {
-        for(int i = 0; i < str1.length(); i++) {
-            if(str1.charAt(i) != str2.charAt(start2 + i)) return false;
+    private boolean matches(String str1, String str2, int start2) { // O(m), O(1) where m is length of needle
+        for(int i = 0; i < str1.length(); i++) { // O(m), O(1)
+            if(str1.charAt(i) != str2.charAt(start2 + i)) return false; // O(1), O(1)
         }
-        return true;
+        return true; // O(1), O(1)
     }
 
     /**
@@ -142,12 +142,12 @@ public class ImplementStrStr {
      * @param length is length of input string
      * @return power
      */
-    private int power(int length) {
-        long power = 1;
-        for(int i = 0; i < length; i++) {
-            power = power * 31;
+    private int power(int length) { // O(m), O(1) where m is length of needle
+        long power = 1; // O(1), O(1)
+        for(int i = 0; i < length; i++) { // O(m), O(1)
+            power = power * 31; // O(1), O(1)
         }
-        return (int)power;
+        return (int)power; // O(1), O(1)
     }
 
     /**

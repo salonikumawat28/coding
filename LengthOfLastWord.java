@@ -27,22 +27,29 @@ public class LengthOfLastWord {
         LengthOfLastWord solution = new LengthOfLastWord();
         String s = "Hello World";
         System.out.println(solution.lengthOfLastWord(s));
-
     }
     
     /**
      * Find Length of last word of the input string.
      * 
      * Steps:
-     * 1. Start a loop i from s.length to 0 and do i--
-     * 2. Check if s[i] is equal to " " (space), return (s.length - i -1).
-     * 3. At the end of loop return s.length.
+     * 1. Initialise length as s.length.
+     * 1. Start a for loop i from s.length - 1 to o.
+     * 2. Check if s[i] == ' ',length--.
+     * 3. else break
+     * 4. Start a for loop i from length to 0
+     * 5. Check if s[i] == ' ', return length - i - 1;
+     * 6. At The end of loop return length.
      * 
      * @param str is input string
      * @return count of length of last word of string.
      */
-    public int lengthOfLastWord(String str) { // O(n), O(1) where n is length of input string
+    public int lengthOfLastWord(String str) { // O(n), O(1) where n is length of input string 
         int length = str.length(); // O(1), O(1)
+        for(int i = length - 1; i >= 0; i--) { // O(n), O(1)
+            if(str.charAt(i) != ' ') break; // O(1), O(1)
+            length--; // O(1), O(1)
+        }
         for(int i = length - 1; i >= 0 ; i--) { // O(n), O(1)
             if(str.charAt(i) == ' ') return length - i - 1; // O(1), O(1)
         }

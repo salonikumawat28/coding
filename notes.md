@@ -54,19 +54,20 @@ Notes - 20/03/2021..............
 1. How to solve a problem/ method:
    a. Understand the problem
    b. Write steps of solving the problemm and each method in it.
-   c. For each step implement a new method. But not need of new method if steps have only 1-2 lines. While implementing remember of null checks.
-   d. Check in the code if any optimisations can be done. For eg: 
+   c. After writing steps think of corner cases. If corner cases are not covered by steps, write steps to cover them.
+   d. For each step implement a new method. But not need of new method if steps have only 1-2 lines. While implementing remember of null checks.
+   e. Check in the code if any optimisations can be done. For eg: 
         1. inverse if-condition, 
         2. ternary operator, 
         3. directly calling condition if ifelse return true or false based on it, 
         4. defining variable once if method used multiple times, 
         5. not defining variable if used only once and it is simple, 
         6. if 'if condition' has only one line then no need of curly backets. etc.
-   e. Code walkthrough via normal correct input cases.
-   f. Code walkthrough via normal incorrect input cases.
-   g. Code walkthrough via corner input cases(both correct and incorrect). For Eg: n = 0, 1; null object; empty array or string; out of bound indexes in array; overflowed integer etc.
-   h. Write TC and Sc.
-   i. Write comments.
+   f. Code walkthrough via normal correct input cases.
+   g. Code walkthrough via normal incorrect input cases.
+   h. Code walkthrough via corner input cases(both correct and incorrect). For Eg: n = 0, 1; null object; empty array or string; out of bound indexes in array; overflowed integer etc.
+   i. Write TC and Sc.
+   j. Write comments.
 
 Notes - 21/ 03/2021..........................................
 1. if 'if statement' is returning boolean using || && operator , then it is good to return the condition directly instead of using 'if statement'.
@@ -113,5 +114,8 @@ General:
     1. Rolling fixed size window: In this approach, we do start++ and end++ based on some condition to roll our window. For eg: rolling hash/ Rabin karp algorithm.
     2. Rolling dynamic size window: In this approach, we either do start++ or end++ to change the size of our old window, or we do start = end = i to move to a new window. For eg: Finding contiguious sub array with maximum sum.
     3. 
+
+Notes: 12/04/2021..............................
+1. if int array is define then it contain 0 as default value.
 
 
