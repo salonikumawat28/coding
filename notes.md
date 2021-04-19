@@ -1,10 +1,86 @@
-Notes - 8/03/2021 .......................................
-1. Method signature = method name + method arguments ke type.
-2. return type is not part of method signature.
+# Notes
 
-**
-multiple arguement
-1.
+## Java Basics
+### Method signature
+We know that in a real world, signature of each person is unique.
+Similarly, `method signature` is something which uniquely defines the method in a Java class.
+_In a Java class, there can't be two methods with same `method signature`._
+
+A method signature consists of `method name` and `method argument's types`.
+Remember that other parts of methods like `return type`, `access modifiers` are not the part of method signature. For example,
+```
+public boolean sleep(Human human, int hours) {}
+```
+In this method, the method signature is `sleep(Human, int)`.
+Here `boolean` or `public` are not the part of method signature.
+
+Let's take another example,
+```
+public booleaan sleep(Human human, int hours) {}
+public int sleep(Human h, int i) {}
+```
+Even though both methods have different return type, this is not allowed in Java as both methods have same signature `sleep(Human, int)`.
+
+#### Why return types doesn't matter in method signature?
+Let's take an example,
+```
+public static void main(String[] args) {
+   boolean slept = sleep(human, hours); // Calling method which returns boolean.
+   int hours = sleep(human, hours); // Calling method which returns int
+}
+public booleaan sleep(Human human, int hours) {
+   System.out.println("I return boolean");
+}
+public int sleep(Human h, int i) {
+   System.out.println("I return int");
+}
+```
+Here as we are defining the variables in main method like `boolean slept`, we can easily tell which method we intend to call. So what is the problem?
+Let's take another example where we are not defining the variables in main method, instead we are directly printing the values.
+```
+public static void main(String[] args) {
+   System.out.println(sleep(human, hours)); // I want to call method which returns boolean.
+   System.out.println(sleep(human, hours)); // I want to call method which returns int
+}
+public booleaan sleep(Human human, int hours) {
+   System.out.println("I return boolean");
+}
+public int sleep(Human h, int i) {
+   System.out.println("I return int");
+}
+```
+This is where Java compiler gets confused. As we haven't defined any variable, it can't know which method user want to call, `boolean` one or `int` one?
+As a programming language can't have ambuiguity, Java simply doesn't allow it. This is the reason Java doesn't include `return` type in method signature as it doesn't help in uniquely identifying the method.
+
+### Overloading
+In a same Java class, when multiple methods have same `method name` but different `method signature`s, then that method is `overloaded` in the class. For example,
+```
+public int sleep(Human human) {}
+public int sleep(Human human, int hours) {}
+
+public int eat(Human human) {}
+public boolean eat(Human human, Food food) {}
+```
+Here `sleep` is an overloaded method because there are multiple methods with name `sleep` but with different `method signatures`, `sleep(Human)` and `sleep(Human, hours)`.
+
+Additionally `eat` is also an overloaded method because there are multiple methods with name `eat` but with different `method signatures`, `eat(Human)` and `eat(Human, Food)`. `Return type` doesn't matter here.
+
+### Access Modifiers
+A modifier modifies something. `Access modifiers` modifies the visibility of a class, constructor, method, or field.
+`private`: Access only within the class.
+`default`: Access only within the package.
+`protected`: Access within the package. Additionally, if a class outside the package has extended the class, then it can also access it.
+`public`: Anyone can access it.
+For example:
+
+TODO: As we are mentioning about class extend here, we should first write the doc inheritance.
+TODO: Create section of each access modifier, and take examples like class can't have private etc.
+TODO: When writing overriding doc, mention that overriden method must not be more restrictive. 
+
+### Non-access Modifiers
+TODO: There are some other modifiers like static, abstract, synchronized, native, volatile, transient. Understand and write docs about it.
+
+
 
 Notes - 9/03/2021 .......................................
 
